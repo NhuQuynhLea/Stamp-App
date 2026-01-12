@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">kmp_hackathon</string>
+    <string name="health_goal_prompt_template">
+        User Profile:
+        - Sex: %1$s
+        - Age: %2$d
+        - Height: %3$.1f cm
+        - Weight: %4$.1f kg
+        - Activity Level: %5$s
+        
+        Health Metrics &amp; Context:
+        - Primary Goal: %6$s
+        - Intensity: %7$s
+        - Secondary Focus: %8$s
+        - Health Conditions: %9$s
+        - Dietary Pattern: %10$s
+        - Medications: %11$s
+        
+        Available Daily Metrics to Track: Calories, Protein, Fiber.
+        
+        Task:
+        Based on this profile, generate a "Detailed Daily Target" plan.
+        The output must be in this format:
+        
+        "Based on your profile and the goal of [GOAL], here is a detailed daily target. This plan focuses on [STRATEGY] while [Is_Caloric_Deficit_Or_Surplus].
+        
+        Daily Target Summary:
+        - Calories: [VALUE] kcal ([RATIONALE])
+        - Protein: [VALUE]g ([RATIONALE])
+        - Fiber: [VALUE]g ([RATIONALE])"
+        
+        Keep it concise, encouraging, and scientifically grounded.
+    </string>
+</resources>

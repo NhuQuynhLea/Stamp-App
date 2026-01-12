@@ -1,0 +1,195 @@
+# Detailed Screen Context & Visual Breakdown
+
+## 1. Main Navigation (Container)
+*   **Bottom Navigation Bar**:
+    *   **Style**: White container background.
+    *   **Item 1 (Journey)**: Label "Journey", Icon `trending_down` (Graph icon).
+    *   **Item 2 (Home)**: Label "Home", Icon `flame`.
+    *   **Item 3 (Profile)**: Label "Profile", Icon `leaf`.
+    *   **Interaction**: Selected item uses Primary Color (Orange/Theme color), others unselected.
+
+---
+
+## 2. Home Screen (Dashboard)
+**File**: `ui/home/HomeScreen.kt`
+
+### **A. Header Section** (`GoalHeader`)
+*   **Text 1**: "Welcome back" (Small, grey).
+*   **Text 2**: "[Main Goal Name]" (e.g., "Weight Loss", "Muscle Gain") (Large, Bold).
+*   **Text 3**: "Consistent efforts compound. Keep tracking to stay on your journey." (Body text, grey).
+
+### **B. Weight Section** (`WeightSection`)
+*   **Container**: Card with shadow.
+*   **Row 1**:
+    *   **Left**:
+        *   Label: "Current" (Small, grey).
+        *   Value: "[Weight]" (Huge, Bold, e.g., "75.5") + Unit "kg" (Small).
+    *   **Right**:
+        *   **Edit Button**: Pencil Icon (`Edit`).
+*   **Row 2 (Stats)**:
+    *   **Left (Loss/Gain)**:
+        *   Label: "Lost" (Small).
+        *   Value: "[Value]" (Large) + "kg".
+        *   **Color Logic**: Green if loss (good for weight loss), Red if gain, Grey if neutral.
+    *   **Right (Status)**:
+        *   Label: "Status" (Small, right-aligned).
+        *   **Badge**: Pill shape with slight background color.
+            *   Content: Colored Dot + Text (e.g., "On Track", "Behind").
+
+### **C. AI Advice Section** (`AIAdviceSection`)
+*   **Warning Card** (Conditional):
+    *   **Style**: Red/Error Container background.
+    *   **Content**: Warning Icon (`Warning`) + [Warning Text].
+*   **Advice Card**:
+    *   **Style**: Blue background (`Color(0xFF2563EB)`).
+    *   **Content**:
+        *   **Icon**: Lightbulb Icon (`Lightbulb`) inside a semi-transparent white circle.
+        *   **Title**: "Tutor Coach" (White, Bold).
+        *   **Text**: [AI Advice Message] (White).
+    *   **Loading State**: Shows "Tutor Coach is thinking..." with a circular spinner.
+
+### **D. Key Metrics Section** (`KeyMetricsSection`)
+*   **Title**: "Today’s Key Metrics"
+*   **Cards Row**: (Dynamically lists 3 metrics based on goal)
+    *   **Card Content**:
+        *   **Header**:
+            *   **Icon**: Dynamic (Fire `LocalFireDepartment` for Calories, Water `WaterDrop`, Barbell `FitnessCenter` for Protein, Heart `Favorite`, or Chart `ShowChart`).
+            *   **Metric %**: "[Value]%" (Small).
+        *   **Body**:
+            *   **Label**: [Metric Name] (e.g., "Protein").
+            *   **Value**: "[Current]" (Large, Bold).
+            *   **Target**: "/ [Target] [Unit]" (Small, e.g., "/ 150 g").
+        *   **Footer**:
+            *   **Progress Bar**: Linear indicator showing progress towards target.
+
+### **E. Weight Chart** (`WeightLineChart`)
+*   (Visible only if > 1 weight entry exists)
+*   **Container**: Surface with shadow.
+*   **Title**: "Weight Trend".
+*   **Chart**: Line chart visualizing weight history.
+
+### **F. Meal Suggestion** (`MealSuggestionSection`)
+*   (Visible if suggestion exists)
+*   **Container**: Cream/Beige Card (`Color(0xFFffd6a8)`).
+*   **Header**:
+    *   **Icon**: `Star` (Breakfast) or `Restaurant` (Lunch/Dinner) (Orange color).
+    *   **Text**: "[Meal Type] Suggestion" (e.g., "Lunch Suggestion").
+*   **Body**:
+    *   **List**: Bullet points with `Check` icon (Orange) followed by suggestion text.
+
+### **G. Daily Trend Chart** (`DailyTrendChart`)
+*   **Container**: White Surface with shadow.
+*   **Title**: "Daily trend".
+*   **Legends**:
+    *   **Metrics**: "1: [Name]", "2: [Name]"... (identifying the bars).
+    *   **Colors**:
+        *   Red Dot "High"
+        *   Green Dot "Good"
+        *   Yellow Dot "Low"
+*   **Chart**:
+    *   **Y-Axis Labels**: "Target", "50%", "0".
+    *   **Reference Lines**: Dashed lines for Target and 50%.
+    *   **X-Axis Labels**: [Date Labels] (e.g., "Today", "Yesterday").
+    *   **Bars**: Grouped bars for the 3 key metrics, colored by status (Red/Green/Yellow).
+
+---
+
+## 3. Journey Screen (History)
+**File**: `ui/journey/JourneyScreen.kt`
+
+### **A. Header**
+*   **Title**: "My Journey" (Large, Bold).
+*   **Actions**:
+    *   **Date Icon**: `DateRange` (Calendar) -> Opens Date Picker.
+    *   **Settings Icon**: `Settings` (Gear) -> Opens API Key dialog.
+
+### **B. Scrollable Timeline**
+*   **Day Group**:
+    *   **Header**:
+        *   **Left**: [Date Label] (e.g., "Today, 12 Jan").
+        *   **Right (Status)**: Pill badge.
+            *   **Healthy**: Green background, `CheckCircle` icon, "Healthy".
+            *   **Needs Improvement**: Orange background, `Warning` icon, "Needs Improvement".
+            *   **Incomplete**: Red background, `Warning` icon, "Incomplete".
+    *   **Meals Row**: (Breakfast, Lunch, Dinner)
+        *   **Item**:
+            *   **Captured**: Shows the food image (Square, rounded corners).
+            *   **Missing**: Grey box with "?" text.
+            *   **Label**: [Meal Type] below box.
+
+---
+
+## 4. Camera Screen (Capture)
+**File**: `ui/camera/CameraScreen.kt`
+
+*   **Background**: Black.
+*   **Viewfinder**: Full screen camera preview.
+*   **Overlay**: White square border (300dp) in center.
+*   **Header**: Cancel Button (X icon) at top left.
+*   **Footer**:
+    *   **Capture Button**: Large White Circle with Gray Border + Camera Icon (`PhotoCamera`) in center.
+
+---
+
+## 5. Food Detail Screen (Analysis)
+**File**: `ui/fooddetail/FoodDetailScreen.kt`
+
+### **A. Top Bar**
+*   **Left**: Back Arrow.
+*   **Title**: "Meal Details".
+
+### **B. Image Header**
+*   **Image**: Full-width aspect ratio 1.5. Uses `SegmentedImageView` (if analysis done) or standard `AsyncImage`.
+
+### **C. Content**
+*   **1. Total Summary Card**:
+    *   **Header**: "Total Nutritional Summary".
+    *   **Status**: Icon/Text (Green "Healthy" or Orange "Improve").
+    *   **Divider**.
+    *   **Grid**: 2-column layout showing "Label \n Value Unit" for:
+        *   Calories, Protein
+        *   Fiber, Added Sugar
+        *   Sat. Fat, Sodium
+        *   Vegetables, Water
+    *   **Footer**: "Avg. Processing Level: [N]/5" (Grey pill).
+*   **2. AI Comment**:
+    *   **Title**: "Comment:".
+    *   **Card**: Semi-transparent background with text content.
+*   **3. Food Items List**:
+    *   **Header**: "Food Items Details ([Count])" + Expand/Collapse Icon (`KeyboardArrowDown`/`Up`).
+    *   **Item Card** (Repeats for each item):
+        *   **Background**: Light Green (Healthy) or Light Orange (Unhealthy).
+        *   **Header**: [Item Name] + Status Icon (Check/Warning).
+        *   **Divider**.
+        *   **Grid**: Detailed metrics (Same fields as total summary).
+        *   **Footer**: "Processing Level: [N]/5".
+
+---
+
+## 6. User Info Screen (Profile)
+**File**: `ui/userinfo/UserInfoScreen.kt`
+
+### **A. Top Bar**
+*   **Title**: "Personal Info".
+*   **Action**: Edit Icon (`Edit`).
+
+### **B. Core Personal Profile** (Card)
+*   **Row**: Age (Input), Sex (Dropdown: Male/Female).
+*   **Row**: Height (Input cm), Weight (Input kg).
+*   **Activity Level**: Radio button list (Sedentary, Lightly Active, etc.).
+
+### **C. Health Context** (Card)
+*   **Health Conditions**: Multi-select dropdown field ("None" or comma-separated list).
+*   **Dietary Pattern**: Text Input.
+*   **Medications**: Text Input.
+
+### **D. Health Goals Strategy** (Card)
+*   **Primary Goal**: Dropdown (e.g., "Weight loss", "Muscle gain").
+*   **Intensity**: Chips (e.g., "Slow", "Moderate", "Fast").
+*   **Secondary Focus**: Multi-select dropdown.
+
+### **E. Actions**
+*   **Button**: "Generate Daily Target" / "Update Daily Target" (Visible only in Edit mode).
+*   **Dialog**: "Recommended Daily Target" (When generation finishes).
+    *   Shows Title & Description.
+    *   List of metrics with editable values.
