@@ -1,6 +1,55 @@
-# Stamp - Health & Meal Tracker (KMP Hackathon)
+# Stamp - Health & Meal Tracker
 
 **Stamp** is a Kotlin Multiplatform (KMP) application designed to help users track their health and meals. It leverages AI to infer nutritional information from food photos and provides personalized health advice based on user goals.
+
+---
+
+## **Screenshots**
+
+<table style="width:100%">
+  <tr>
+    <th width="20%">Home (Dashboard)</th>
+    <th width="20%">StampBook (History)</th>
+    <th width="20%">Stamp (Capture)</th>
+    <th width="20%">Meal Analysis</th>
+    <th width="20%">Personal (User Info)</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/HomeScreen.jpg" alt="Home Screen Dashboard" width="100%" />
+    </td>
+    <td align="center">
+      <img src="images/StampBookScreen.jpg" alt="Journey Timeline Screen" width="100%" />
+    </td>
+    <td align="center">
+      <img src="images/StampScreen.jpg" alt="Camera Capture Screen" width="100%" />
+    </td>
+    <td align="center">
+      <img src="images/FoodDetailScreen.jpg" alt="Food Detail Analysis" width="100%" />
+    </td>
+    <td align="center">
+      <img src="images/PersonalScreen.jpg" alt="User Profile Screen" width="100%" />
+    </td>
+  </tr>
+</table>
+
+---
+
+## **Demo Video**
+
+<div align="center">
+  <a href="https://youtu.be/t3p6tdmcy_4" target="_blank">
+    <img src="http://img.youtube.com/vi/t3p6tdmcy_4/0.jpg" alt="Watch the Demo Video" width="80%" />
+  </a>
+  <p><i>Click to watch the demo video</i></p>
+</div>
+
+---
+
+## **Architecture**
+
+The project follows the **MVVM (Model-View-ViewModel)** architectural pattern to ensure separation of concerns and testability.
+
 
 ---
 
@@ -151,7 +200,21 @@ The flow is designed to ensure no meal goes unlogged by using visual cues in the
 
 ## **3. Tech Stack**
 
-### **3.1. Mobile App (Jetpack Compose)**
+### **3.1. Technologies Used**
+
+*   **Core**: Kotlin Multiplatform (Android & iOS)
+*   **UI**: Jetpack Compose (Android), Compose Multiplatform (iOS)
+*   **Architecture**: MVVM (Model-View-ViewModel)
+*   **Networking**: Ktor Client
+*   **Database**: Room (SQLite) with KMP support
+*   **Image Loading**: Coil 3
+*   **AI/ML**: Google Gemini API (Multimodal)
+*   **Utilities**: 
+    *   Kotlinx Coroutines & Flow
+    *   Kotlinx Serialization
+    *   Kotlinx DateTime
+    *   CameraX (Android)
+
 
 ### **Project Structure & File Mapping**
 
