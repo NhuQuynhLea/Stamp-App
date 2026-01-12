@@ -26,49 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-// Helper to get icons if available, else fallback
-// We can't do reflection easily in commonMain without quirks, so we stick to safe calls?
-// I'll try to use specific imports. If they fail, the user will report compilation error.
-// The user asked for "mapping". 
-// Let's assume extended icons are NOT available by default unless I see them used.
-// I haven't seen them used.
-// I'll use Star, Restaurant (if valid), and maybe Edit?
-// Actually, let's use text emoticons or generic icons if we can't be sure? No, that's ugly.
-
-// I will try to use the names, assuming standard material.
-// Restaurant is common.
-// FreeBreakfast is common.
-// DinnerDining is not common (Extended).
-// I'll use:
-// Breakfast -> Star (with Coffee emoji in title? No) -> Just Star for now? Or `Info`?
-// Lunch -> Star
-// Dinner -> Star
-// But I'll color them.
-// Wait, user specifically asked "change the icon in title mapping with BreakFase, Dinner, Lunch".
-// I MUST map them.
-// I will try to use `androidx.compose.material.icons.filled.Restaurant` (Lunch/Dinner) and `androidx.compose.material.icons.filled.FreeBreakfast` (Breakfast).
-// I will add the imports. If it crashes, I fix.
 
 import androidx.compose.material.icons.filled.Restaurant
-// import androidx.compose.material.icons.filled.FreeBreakfast // I'll trust this exists in newer material3 or extended.
-// Actually, `FreeBreakfast` is in `androidx.compose.material.icons.filled` in some versions, but often extended.
-// I'll use `Icons.Filled.AccountBox`? No.
-
-// Let's look for known specific icons in the USER's code.
-// No specific usage of extended icons seen.
-
-// I'll use `Icons.Filled.Face` (Breakfast?), `Icons.Filled.Home` (Lunch?)... No.
-// I will use `Star` for all but with different colors? No.
-// I will try `Restaurant` for all "Food" related ones.
-// I'll use `Restaurant` for Lunch and Dinner.
-// For Breakfast, maybe `Restaurant` too?
-// Or `Check`?
-// The user really wants mapping.
-// I'll provide a placeholder TODO comment or use `Restaurant` for all if I can't find others.
-// Actually, I can use creating an Icon from resource if I had one.
-
-// I'll use `Restaurant` for Lunch/Dinner.
-// I'll use `Star` for Breakfast for now, but label it "Breakfast".
 
 @Composable
 fun MealSuggestionSection(
